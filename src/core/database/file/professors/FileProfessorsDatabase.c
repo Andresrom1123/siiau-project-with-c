@@ -10,7 +10,6 @@
 
 #define PROFESORS_FILE_PATH "src/core/database/file/professors/storage.txt"
 
-// TODO: Implement this function (LEO)
 Professor createProfessor(const CreateProfessorData *data) {
   Professor professor;
 
@@ -18,8 +17,6 @@ Professor createProfessor(const CreateProfessorData *data) {
 
   if (!file) {
     printf("Error: %s not found.\n", PROFESORS_FILE_PATH);
-
-    return professor;
   } else {
     strcpy(professor.name, data->name);
     strcpy(professor.firstLastName, data->firstLastName);

@@ -4,7 +4,6 @@
 #include "../../../database/Database.h"
 #include "../../../database/professorsRepository/CreateProfessorData.h"
 
-// TODO: Implement this function (LEO)
 void CreateProfessor(Database database) {
   char name[50];
   char firstLastName[50];
@@ -20,7 +19,7 @@ void CreateProfessor(Database database) {
   printf("\nIngresa el apellido materno del profesor: ");
   scanf("%49s", secondLastName);
 
-  printf("\nIngresa la materia de Ingieneria del profesor: ");
+  printf("\nIngresa el departamento del profesor: ");
   scanf("%49s", department);
 
   CreateProfessorData data = {
