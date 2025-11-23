@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "../../database/Database.h"
+#include "./create/CreateProfessor.h"
 
 int manageProfessors(Database database) {
   int option;
@@ -19,8 +20,7 @@ int manageProfessors(Database database) {
 
   switch (option) {
     case 1:
-      // TODO: Implement CreateProfessor function (LEO)
-      printf("Crear un professor");
+      CreateProfessor(database);
 
       break;
     case 2:

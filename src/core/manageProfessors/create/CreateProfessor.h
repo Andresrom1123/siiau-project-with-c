@@ -3,6 +3,6 @@
 
 #include "../../../database/Database.h"
 
-void CreateStudent(Database database);
+void CreateProfessor(Database database);
 
 #endif

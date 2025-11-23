@@ -7,7 +7,7 @@ typedef struct {
   char firstLastName[50];
   char secondLastName[50];
   char department[50];
-  char subject;
+  char *subject;
 } Professor;
 
 #endif
