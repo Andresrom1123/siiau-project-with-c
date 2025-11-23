@@ -73,6 +73,9 @@ StudentList findAll() {
     Student student;
 
     char *token = strtok(line, ":");
+    student.code = atoi(token);
+
+    token = strtok(NULL, ":");
     strcpy(student.name, token);
 
     token = strtok(NULL, ":");
@@ -82,12 +85,10 @@ StudentList findAll() {
     strcpy(student.secondLastName, token);
 
     token = strtok(NULL, ":");
-    student.code = atoi(token);
-
-    token = strtok(NULL, ":");
     strcpy(student.major, token);
 
     token = strtok(NULL, ":");
+
     student.subjects = malloc(strlen(token) + 1);
     strcpy(student.subjects, token);
 

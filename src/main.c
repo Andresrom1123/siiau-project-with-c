@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "./core/database/file/FileDatabase.h"
+#include "./core/manageProfessors/manageProfessors.h"
 #include "./core/manageStudents/manageStudents.h"
 
 int main() {
@@ -23,7 +24,8 @@ int main() {
 
       break;
     case 2:
-      printf("Modulo de profesores");
+      manageProfessors(database);
+
       break;
     case 3:
       printf("Modulo de materias");
