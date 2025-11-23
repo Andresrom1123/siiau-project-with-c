@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "./create/CreateStudent.h"
+#include "./get/GetStudents.h"
 #include "../../database/Database.h"
 
 int manageStudents(Database database) {
@@ -24,7 +25,7 @@ int manageStudents(Database database) {
 
       break;
     case 2:
-      printf("Consultar lista de alumnos");
+      GetStudents(database);
 
       break;
     case 3:
@@ -44,7 +45,8 @@ int manageStudents(Database database) {
 
       break;
     case 7:
-      printf("Guardar y salir");
+      return 0;
+
       break;
     default:
       printf("Opcion no valida, intenta de nuevo");
