@@ -1,27 +1,42 @@
 #include <stdio.h>
 
-#include "./core/database/memory/MemoryDatabase.h"
+#include "./core/database/file/FileDatabase.h"
+#include "./core/manageStudents/manageStudents.h"
 
 int main() {
-  Database database = newMemoryDatabase();
+  int option;
 
-  CreateStudentData data = {
-    "Andres",
-    "Romero",
-    "Vergara",
-    12345,
-    "Informatica"
-  };
+  Database database = newFileDatabase();
 
-  Student student = database.students.create(&data);
+  printf("Sistema gestion academica MI UNI");
+  printf("\n 1. Gestion de alumnos");
+  printf("\n 2. Gestion de profesores");
+  printf("\n 3. Gestion de materias");
+  printf("\n 4. Guardar y salir");
+  printf("\n Que opcion deseas elegir: ");
 
-  printf("Estudiante: %s %s %s %s — Código: %d\n",
-    student.id,
-    student.name,
-    student.firstLastName,
-    student.secondLastName,
-    student.code
-  );
+  scanf("%d", &option);
+
+  switch (option) {
+    case 1:
+      manageStudents(database);
+
+      break;
+    case 2:
+      printf("Modulo de profesores");
+      break;
+    case 3:
+      printf("Modulo de materias");
+      break;
+    case 4:
+      return 0;
+
+      break;
+    default:
+      printf("Opcion no valida, intenta de nuevo");
+
+      break;
+  }
 
   return 0;
 }

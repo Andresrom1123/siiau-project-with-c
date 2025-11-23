@@ -2,8 +2,10 @@ CC = gcc
 CFLAGS = -Wall -Wextra -std=c11
 
 SRC = src/main.c \
-	src/core/database/memory/MemoryDatabase.c \
-	src/core/database/memory/MemoryStudentsDatabase.c
+	src/core/manageStudents/manageStudents.c \
+	src/core/manageStudents/create/CreateStudent.c \
+	src/core/database/file/FileDatabase.c \
+	src/core/database/file/students/FileStudentsDatabase.c
 
 OUT = dist/app
 

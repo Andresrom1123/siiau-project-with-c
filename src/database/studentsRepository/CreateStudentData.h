@@ -5,7 +5,6 @@ typedef struct {
   const char *name;
   const char *firstLastName;
   const char *secondLastName;
-  int code;
   const char *major;
 } CreateStudentData;
 

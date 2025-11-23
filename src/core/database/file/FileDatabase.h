@@ -3,6 +3,6 @@
 
 #include "../../../database/Database.h"
 
-Database newMemoryDatabase();
+Database newFileDatabase();
 
 #endif
