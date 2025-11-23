@@ -3,7 +3,7 @@
 
 #include "../../../../database/professorsRepository/ProfessorsRepository.h"
 
-ProfessorsRepository newFileStudentsDatabase();
+ProfessorsRepository newFileProfessorsDatabase();
 
 #endif
 
