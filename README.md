@@ -36,3 +36,4 @@ Use this before rebuilding to avoid stale or conflicting binaries.
 - GCC (GNU Compiler Collection)
 - Make utility
 - Linux or macOS recommended (Windows users can use WSL or MinGW)
+tengo hambre
