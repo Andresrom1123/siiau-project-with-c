@@ -42,17 +42,66 @@ Professor createProfessor(const CreateProfessorData *data) {
 }
 
 // TODO: Implement this function (RAFA)
-/* ProfessorList findAll() {
-  ProfessorList list;
+ProfessorList findAllProfessors(){ ProfessorList list;
+
+  list.items = NULL;
+  list.count = 0;
+
+  FILE *file = fopen(PROFESORS_FILE_PATH, "r");
+
+  if (!file) {
+    printf("Error: %s not found.\n", PROFESORS_FILE_PATH);
+
+    return list;
+  }
+
+  char line[512];
+  int capacity = 10;
+
+  list.items = malloc(sizeof(Professor) * capacity);
+
+  while (fgets(line, sizeof(line), file)) {
+    if (list.count >= capacity) {
+      capacity *= 2;
+      list.items = realloc(list.items, sizeof(Professor) * capacity);
+    }
+
+    line[strcspn(line, "\n")] = 0;
+
+    Professor professor;
+
+    char *token = strtok(line, ":");
+    professor.code = atoi(token);
+
+    token = strtok(NULL, ":");
+    strcpy(professor.name, token);
+
+    token = strtok(NULL, ":");
+    strcpy(professor.firstLastName, token);
+
+    token = strtok(NULL, ":");
+    strcpy(professor.secondLastName, token);
+
+    token = strtok(NULL, ":");
+    strcpy(professor.department, token);
+
+    token = strtok(NULL, ":");
+
+    professor.subject = malloc(strlen(token) + 1);
+    strcpy(professor.subject, token);
+
+    list.items[list.count++] = professor;
+  }
+
+  fclose(file);
 
   return list;
-} */
-
+  }
 ProfessorsRepository newFileProfessorsDatabase() {
   ProfessorsRepository repo;
 
   repo.create = &createProfessor;
-  // repo.findAll = &findAll;
+  repo.findAll = &findAllProfessors;
 
   return repo;
 }

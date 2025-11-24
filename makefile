@@ -10,8 +10,9 @@ SRC = src/main.c \
 	src/core/manageStudents/get/GetStudents.c \
 	src/core/database/file/FileDatabase.c \
 	src/core/database/file/students/FileStudentsDatabase.c \
-	src/core/database/file/professors/FileProfessorsDatabase.c
-
+ 	src/core/database/file/professors/FileProfessorsDatabase.c \
+	src/core/manageProfessors/get/GetProfessors.c
+	
 OUT = dist/app
 
 all: dist $(SRC)

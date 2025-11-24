@@ -1,2 +1,3 @@
-123:Leonardo:Lopez:Mariscal:Matematicas
-123:Andres:Romero:Vergara:Matematicas
+123:Leonardo:Lopez:Mariscal:Matematicas:.
+123:Andres:Romero:Vergara:Matematicas:.
+123:mateo:ono:ala:fisica:.123:lall:osos:maduros:fisica
