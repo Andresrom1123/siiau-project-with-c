@@ -2,6 +2,7 @@
 
 #include "../../database/Database.h"
 #include "./create/CreateProfessor.h"
+#include "./get/GetProfessors.h"
 
 int manageProfessors(Database database) {
   int option;
@@ -24,9 +25,8 @@ int manageProfessors(Database database) {
 
       break;
     case 2:
-      // TODO: Implement GetProfessors function (RAFA)
-      printf("Consultar lista de professors");
-
+      GetProfessors(database);
+      
       break;
     case 3:
       printf("Buscar un professor");
