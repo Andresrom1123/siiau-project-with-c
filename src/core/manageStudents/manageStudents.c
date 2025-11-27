@@ -2,6 +2,7 @@
 
 #include "../../database/Database.h"
 
+#include "./assignSubject/AssignSubject.h"
 #include "./create/CreateStudent.h"
 #include "./get/GetStudents.h"
 
@@ -14,8 +15,9 @@ int manageStudents(Database database) {
   printf("\n 3. Buscar un alumno");
   printf("\n 4. Modificar un alumno");
   printf("\n 5. Eliminar un alumno");
-  printf("\n 6. Regresar al menu principal");
-  printf("\n 7. Guardar y salir");
+  printf("\n 6. Asignar una materia a un estudiante");
+  printf("\n 7. Regresar al menu principal");
+  printf("\n 8. Guardar y salir");
   printf("\n Que opcion deseas elegir: ");
 
   scanf("%d", &option);
@@ -42,10 +44,14 @@ int manageStudents(Database database) {
 
       break;
     case 6:
-      printf("Regresar al menu principal");
+      AssignSubject(database);
 
       break;
     case 7:
+      printf("Regresar al menu principal");
+
+      break;
+    case 8:
       return 0;
 
       break;

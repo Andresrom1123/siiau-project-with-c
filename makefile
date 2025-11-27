@@ -6,6 +6,7 @@ SRC = src/main.c \
 	src/core/manageProfessors/manageProfessors.c \
 	src/core/manageProfessors/create/CreateProfessor.c \
 	src/core/manageProfessors/get/GetProfessors.c \
+	src/core/manageStudents/assignSubject/AssignSubject.c \
 	src/core/manageStudents/create/CreateStudent.c \
 	src/core/manageStudents/get/GetStudents.c \
 	src/core/manageSubjects/create/CreateSubject.c \

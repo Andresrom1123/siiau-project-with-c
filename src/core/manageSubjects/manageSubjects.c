@@ -10,11 +10,10 @@ int manageSubjects(Database database) {
   printf("Modulo de materias:");
   printf("\n 1. Agregar una materia");
   printf("\n 2. Consultar la lista de materias");
-  printf("\n 3. Agregar una materia a un estudiante");
-  printf("\n 4. Modificar una materia");
-  printf("\n 5. Eliminar una materia");
-  printf("\n 6. Regresar al menu principal");
-  printf("\n 7. Guardar y salir");
+  printf("\n 3. Modificar una materia");
+  printf("\n 4. Eliminar una materia");
+  printf("\n 5. Regresar al menu principal");
+  printf("\n 6. Guardar y salir");
   printf("\n Que opcion deseas elegir: ");
 
   scanf("%d", &option);
@@ -29,22 +28,18 @@ int manageSubjects(Database database) {
 
       break;
     case 3:
-      printf("\nAgregar una materia a un estudiante");
-
-      break;
-    case 4:
       printf("\nModificar una materia");
 
       break;
-    case 5:
+    case 4:
       printf("\nEliminar una materia");
 
       break;
-    case 6:
+    case 5:
       printf("\nRegresar al menu principal");
 
       break;
-    case 7:
+    case 6:
       return 0;
 
       break;

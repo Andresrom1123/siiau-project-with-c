@@ -35,7 +35,7 @@ Professor createProfessor(const CreateProfessorData *data) {
       professor.firstLastName,
       professor.secondLastName,
       professor.department,
-      "."
+      ""
     );
   }
 
@@ -87,10 +87,6 @@ ProfessorList findAllProfessors() {
 
     token = strtok(NULL, ":");
     strcpy(professor.department, token);
-
-    token = strtok(NULL, ":");
-    professor.subject = malloc(strlen(token) + 1);
-    strcpy(professor.subject, token);
 
     list.items[list.count++] = professor;
   }
