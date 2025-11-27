@@ -1,7 +1,7 @@
 #ifndef SUBJECT_LIST_H
 #define SUBJECT_LIST_H
 
-#include "../../core/Subject.h"
+#include "./Subject.h"
 
 typedef struct {
   Subject* items;

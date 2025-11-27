@@ -3,10 +3,10 @@
 #include <stdlib.h>
 
 #include "../../../Subject.h"
+#include "../../../SubjectList.h"
 #include "../../../../lib/generateCode/generateCode.h"
 #include "../../../../database/subjectsRepository/CreateSubjectData.h"
 #include "../../../../database/subjectsRepository/SubjectsRepository.h"
-#include "../../../../database/subjectsRepository/SubjectList.h"
 
 #define SUBJECTS_FILE_PATH "src/core/database/file/subjects/storage.txt"
 
@@ -82,11 +82,64 @@ SubjectList findAllSubjects() {
   return list;
 }
 
+Subject* findByCodeSubject(const int code) {
+  FILE *file = fopen(SUBJECTS_FILE_PATH, "r");
+
+  if (!file) {
+    printf("Error: file not found.\n");
+    return NULL;
+  }
+
+  char line[512];
+
+  while (fgets(line, sizeof(line), file)) {
+    line[strcspn(line, "\n")] = 0;
+
+    Subject subject;
+
+    char *token = strtok(line, ":");
+
+    if (!token) continue;
+
+    subject.code = atoi(token);
+
+    token = strtok(NULL, ":");
+    if (!token) continue;
+
+    strcpy(subject.name, token);
+
+    if (subject.code == code) {
+      Subject *result = malloc(sizeof(Subject));
+
+      if (!result) {
+        printf("Error allocating memory.\n");
+
+        fclose(file);
+
+        return NULL;
+      }
+
+      result->code = subject.code;
+
+      strcpy(result->name, subject.name);
+
+      fclose(file);
+
+      return result;
+    }
+  }
+
+  fclose(file);
+
+  return NULL;
+}
+
 SubjectsRepository newFileSubjectsDatabase() {
   SubjectsRepository repo;
 
   repo.create = &createSubject;
   repo.findAll = &findAllSubjects;
+  repo.findByCode = &findByCodeSubject;
 
   return repo;
 }
