@@ -4,11 +4,11 @@
 #include "../../core/Subject.h"
 
 #include "./CreateSubjectData.h"
-#include "./Subject.h"
+#include "./SubjectList.h"
 
 typedef struct {
   Subject (*create)(const CreateSubjectData *data);
-  Subject (*findAll)();
-} StudentsRepository;
+  SubjectList (*findAll)();
+} SubjectsRepository;
 
 #endif

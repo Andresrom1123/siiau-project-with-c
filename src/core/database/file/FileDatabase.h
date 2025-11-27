@@ -1,5 +1,5 @@
-#ifndef MEMORY_DATABASE_H
-#define MEMORY_DATABASE_H
+#ifndef FILE_DATABASE_H
+#define FILE_DATABASE_H
 
 #include "../../../database/Database.h"
 

@@ -8,7 +8,7 @@
 int manageStudents(Database database) {
   int option;
 
-  printf("Modulo de alumnos");
+  printf("Modulo de alumnos:");
   printf("\n 1. Agregar alumno");
   printf("\n 2. Consultar lista de alumnos");
   printf("\n 3. Buscar un alumno");

@@ -3,6 +3,7 @@
 #include "./core/database/file/FileDatabase.h"
 #include "./core/manageProfessors/manageProfessors.h"
 #include "./core/manageStudents/manageStudents.h"
+#include "./core/manageSubjects/manageSubjects.h"
 
 int main() {
   int option;
@@ -28,7 +29,8 @@ int main() {
 
       break;
     case 3:
-      printf("Modulo de materias");
+      manageSubjects(database);
+
       break;
     case 4:
       return 0;
