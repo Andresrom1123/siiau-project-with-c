@@ -3,6 +3,8 @@
 #include "../../database/Database.h"
 #include "./create/CreateProfessor.h"
 #include "./get/GetProfessors.h"
+#include "./get/GetProfessor.h"
+#include "./modify/ModifyProfessor.h"
 
 #include "./create/CreateProfessor.h"
 
@@ -31,11 +33,11 @@ int manageProfessors(Database database) {
       
       break;
     case 3:
-      // GetProfessor(database);
+      GetProfessor(database);
 
       break;
     case 4:
-      printf("Modificar un professor");
+      ModifyProfessor(database);
 
       break;
     case 5:
