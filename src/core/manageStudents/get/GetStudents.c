@@ -28,7 +28,7 @@ void GetStudents(Database database) {
     for (int j = 0; j < students[i].subjects->count; j++) {
       Subject subject = students[i].subjects->items[j];
 
-      printf("  - Code: %d  |  Nombre: %s\n",
+      printf("  - Codigo: %d  |  Nombre: %s\n",
         subject.code,
         subject.name
       );

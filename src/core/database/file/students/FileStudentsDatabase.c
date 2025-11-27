@@ -157,7 +157,6 @@ StudentList findAllStudents() {
     subjectList->items = realloc(subjectList->items, sizeof(Subject) * subjectList->count);
     student.subjects = subjectList;
 
-
     list.items[list.count++] = student;
   }
 
@@ -221,15 +220,15 @@ Student* findStudentByCode(const int code) {
       return student;
     }
 
-    char *buffer = malloc(strlen(token)+1);
+    char *buffer = malloc(strlen(token) + 1);
 
     strcpy(buffer, token);
 
     int capacity = 5;
-
     subjectList->items = malloc(sizeof(Subject) * capacity);
 
-    char *subjToken = strtok(buffer, ".");
+    char *saveptr = NULL;
+    char *subjToken = strtok_r(buffer, ".", &saveptr);
 
     while (subjToken) {
       if (subjectList->count >= capacity) {
@@ -251,7 +250,11 @@ Student* findStudentByCode(const int code) {
         subjectList->count++;
       }
 
-      subjToken = strtok(NULL, ".");
+      subjToken = strtok_r(NULL, ".", &saveptr);
+    }
+
+    if (subjectList->count > 0) {
+      subjectList->items = realloc(subjectList->items, sizeof(Subject) * subjectList->count);
     }
 
     free(buffer);
