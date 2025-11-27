@@ -12,7 +12,7 @@ void AssignSubject(Database database) {
   printf("Ingresa el codigo de la materia: ");
   scanf("%d", &subjectCode);
 
-  Student *student = database.students.findByCode(studentCode, &database);
+  Student *student = database.students.findByCode(studentCode);
 
   if (student == NULL) {
     printf("\n El estudiante no existe");

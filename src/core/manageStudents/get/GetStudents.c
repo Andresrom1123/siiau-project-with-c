@@ -4,7 +4,7 @@
 #include "../../../database/studentsRepository/StudentList.h"
 
 void GetStudents(Database database) {
-  StudentList studentList = database.students.findAll(&database);
+  StudentList studentList = database.students.findAll();
 
   for (int i = 0; i < studentList.count; i++) {
     Student *students = studentList.items;

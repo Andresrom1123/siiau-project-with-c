@@ -2,7 +2,8 @@
 #define FILE_STUDENTS_DATABASE_H
 
 #include "../../../../database/studentsRepository/StudentsRepository.h"
+#include "../../../../database/Database.h"
 
-StudentsRepository newFileStudentsDatabase();
+StudentsRepository newFileStudentsDatabase(Database database);
 
 #endif

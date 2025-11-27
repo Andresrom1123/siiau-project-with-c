@@ -4,7 +4,9 @@
 
 #include "./assignSubject/AssignSubject.h"
 #include "./create/CreateStudent.h"
+#include "./get/GetStudent.h"
 #include "./get/GetStudents.h"
+#include "./modify/ModifyStudent.h"
 
 int manageStudents(Database database) {
   int option;
@@ -32,15 +34,15 @@ int manageStudents(Database database) {
 
       break;
     case 3:
-      printf("Buscar un alumno");
+      GetStudent(database);
 
       break;
     case 4:
-      printf("Modificar un alumno");
+      ModifyStudent(database);
 
       break;
     case 5:
-      printf("Eliminar un alumno");
+      // DeleteStudent(database);
 
       break;
     case 6:
