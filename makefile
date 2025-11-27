@@ -1,8 +1,8 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11
 
-# TODO: When GetProfessors and CreateProfessors are created, implement them
 SRC = src/main.c \
+	src/lib/generateCode/generateCode.c \
 	src/core/manageProfessors/manageProfessors.c \
 	src/core/manageProfessors/create/CreateProfessor.c \
 	src/core/manageStudents/manageStudents.c \

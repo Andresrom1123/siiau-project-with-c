@@ -3,14 +3,14 @@
 #include <stdlib.h>
 
 #include "../../../Student.h"
-
+#include "../../../../lib/generateCode/generateCode.h"
 #include "../../../../database/studentsRepository/CreateStudentData.h"
 #include "../../../../database/studentsRepository/StudentsRepository.h"
 #include "../../../../database/studentsRepository/StudentList.h"
 
 #define STUDENTS_FILE_PATH "src/core/database/file/students/storage.txt"
 
-Student create(const CreateStudentData *data) {
+Student createStudent(const CreateStudentData *data) {
   Student student;
 
   FILE *file = fopen(STUDENTS_FILE_PATH, "a");
@@ -25,16 +25,19 @@ Student create(const CreateStudentData *data) {
     strcpy(student.secondLastName, data->secondLastName);
     strcpy(student.major, data->major);
 
-    student.code = 123;
+    char code[10];
+
+    student.code = generateCode(code);
 
     fprintf(
       file,
-      "%d:%s:%s:%s:%s\n",
+      "%d:%s:%s:%s:%s:%s\n",
       student.code,
       student.name,
       student.firstLastName,
       student.secondLastName,
-      student.major
+      student.major,
+      "."
     );
 
     fclose(file);
@@ -43,7 +46,7 @@ Student create(const CreateStudentData *data) {
   }
 }
 
-StudentList findAll() {
+StudentList findAllStudents() {
   StudentList list;
 
   list.items = NULL;
@@ -88,7 +91,6 @@ StudentList findAll() {
     strcpy(student.major, token);
 
     token = strtok(NULL, ":");
-
     student.subjects = malloc(strlen(token) + 1);
     strcpy(student.subjects, token);
 
@@ -103,8 +105,8 @@ StudentList findAll() {
 StudentsRepository newFileStudentsDatabase() {
   StudentsRepository repo;
 
-  repo.create = &create;
-  repo.findAll = &findAll;
+  repo.create = &createStudent;
+  repo.findAll = &findAllStudents;
 
   return repo;
 }

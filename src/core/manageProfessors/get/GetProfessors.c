@@ -1,23 +1,29 @@
-#include "../../../database/Database.h"
 #include <stdio.h>
 
-void GetProfessors(Database database){
-    printf("\n---- LISTA DE PROFESORES ----\n\n");
+#include "../../../database/Database.h"
+#include "../../../database/professorsRepository/ProfessorList.h"
 
-    ProfessorList professorList = database.professors.findAll();
+void GetProfessors(Database database) {
+  printf("\n---- LISTA DE PROFESORES ----\n\n");
 
-    if (professorList.count == 0){
-        printf("No hay profesores registrados. \n");
-        return;
-    }
-    
-    for (int i = 0; i < professorList.count; i++){
-        Professor p = professorList.items[i];
+  ProfessorList professorList = database.professors.findAll();
 
-        printf("Codigo: %d\n", p.code);
-        printf("Nombre; %s %s %s\n", p.name, p.firstLastName, p.secondLastName);
-        printf("Departamento: %s\n", p.department);
-        printf("--------------------\n");
-        }
-    
+  if (professorList.count == 0) {
+    printf("No hay profesores registrados. \n");
+
+    return;
+  }
+ 
+  for (int i = 0; i < professorList.count; i++) {
+    Professor *professors = professorList.items;
+
+    printf("Codigo: %d\n", professors[i].code);
+    printf("Nombre: %s %s %s\n",
+      professors[i].name,
+      professors[i].firstLastName,
+      professors[i].secondLastName
+    );
+    printf("Departamento: %s\n", professors[i].department);
+    printf("--------------------\n");
+  }
 }

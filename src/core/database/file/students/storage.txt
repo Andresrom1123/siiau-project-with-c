@@ -1,5 +1,1 @@
-10001:Andres:Romero:Vergara:Informatica:Matematicas:Programacion.Algebra Lineal
-10002:Maria:Gonzalez:Hernandez:Arquitectura:Diseno.Historia del Arte.Geometria
-10003:Luis:Martinez:Reyes:Contabilidad:Contabilidad.Matematicas Financieras.Microeconomia
-10004:Fernanda:Lopez:Vargas:Psicologia:Psicologia General.Neurociencias.Estadistica
-10005:Jorge:Mendez:Castillo:Derecho:Derecho Civil.Introduccion al Derecho.Historia del Derecho
+104289383:Andres:Romero:Vergara:Informatica:.
