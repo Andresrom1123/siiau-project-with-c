@@ -4,15 +4,18 @@
 #include "./create/CreateProfessor.h"
 #include "./get/GetProfessors.h"
 
+#include "./create/CreateProfessor.h"
+
+
 int manageProfessors(Database database) {
   int option;
 
-  printf("Modulo de professors");
-  printf("\n 1. Agregar professor");
-  printf("\n 2. Consultar lista de professors");
-  printf("\n 3. Buscar un professor");
-  printf("\n 4. Modificar un professor");
-  printf("\n 5. Eliminar un professor");
+  printf("Modulo de professores");
+  printf("\n 1. Agregar un profesor");
+  printf("\n 2. Consultar lista de profesores");
+  printf("\n 3. Buscar un profesor");
+  printf("\n 4. Modificar un profesor");
+  printf("\n 5. Eliminar un profesor");
   printf("\n 6. Regresar al menu principal");
   printf("\n 7. Guardar y salir");
   printf("\n Que opcion deseas elegir: ");

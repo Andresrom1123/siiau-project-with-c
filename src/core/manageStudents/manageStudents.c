@@ -1,8 +1,9 @@
 #include <stdio.h>
 
+#include "../../database/Database.h"
+
 #include "./create/CreateStudent.h"
 #include "./get/GetStudents.h"
-#include "../../database/Database.h"
 
 int manageStudents(Database database) {
   int option;

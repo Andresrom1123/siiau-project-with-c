@@ -3,36 +3,39 @@
 #include <stdlib.h>
 
 #include "../../../Professor.h"
-
+#include "../../../../lib/generateCode/generateCode.h"
 #include "../../../../database/professorsRepository/CreateProfessorData.h"
 #include "../../../../database/professorsRepository/ProfessorsRepository.h"
 #include "../../../../database/professorsRepository/ProfessorList.h"
 
-#define PROFESORS_FILE_PATH "src/core/database/file/professors/storage.txt"
+#define PROFESSORS_FILE_PATH "src/core/database/file/professors/storage.txt"
 
 Professor createProfessor(const CreateProfessorData *data) {
   Professor professor;
 
-   FILE *file = fopen(PROFESORS_FILE_PATH, "a");
+   FILE *file = fopen(PROFESSORS_FILE_PATH, "a");
 
   if (!file) {
-    printf("Error: %s not found.\n", PROFESORS_FILE_PATH);
+    printf("Error: %s not found.\n", PROFESSORS_FILE_PATH);
   } else {
     strcpy(professor.name, data->name);
     strcpy(professor.firstLastName, data->firstLastName);
     strcpy(professor.secondLastName, data->secondLastName);
     strcpy(professor.department, data->department);
 
-    professor.code = 123;
+    char code[10];
+
+    professor.code = generateCode(code);
 
     fprintf(
       file,
-      "%d:%s:%s:%s:%s\n",
+      "%d:%s:%s:%s:%s:%s\n",
       professor.code,
       professor.name,
       professor.firstLastName,
       professor.secondLastName,
-      professor.department
+      professor.department,
+      "."
     );
   }
 
@@ -41,16 +44,16 @@ Professor createProfessor(const CreateProfessorData *data) {
   return professor;
 }
 
-// TODO: Implement this function (RAFA)
-ProfessorList findAllProfessors(){ ProfessorList list;
+ProfessorList findAllProfessors() {
+  ProfessorList list;
 
   list.items = NULL;
   list.count = 0;
 
-  FILE *file = fopen(PROFESORS_FILE_PATH, "r");
+  FILE *file = fopen(PROFESSORS_FILE_PATH, "r");
 
   if (!file) {
-    printf("Error: %s not found.\n", PROFESORS_FILE_PATH);
+    printf("Error: %s not found.\n", PROFESSORS_FILE_PATH);
 
     return list;
   }
@@ -86,7 +89,6 @@ ProfessorList findAllProfessors(){ ProfessorList list;
     strcpy(professor.department, token);
 
     token = strtok(NULL, ":");
-
     professor.subject = malloc(strlen(token) + 1);
     strcpy(professor.subject, token);
 
@@ -105,4 +107,3 @@ ProfessorsRepository newFileProfessorsDatabase() {
 
   return repo;
 }
-
