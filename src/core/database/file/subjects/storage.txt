@@ -1,2 +1,4 @@
 104289383:Matematicas_1
 104289382:Matematicas_2
+104289381:Programacion_estructurada
+117176605:Programacion_estructurada_2

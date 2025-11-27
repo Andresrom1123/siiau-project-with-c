@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "../../../Professor.h"
 #include "../../../../lib/generateCode/generateCode.h"
@@ -11,6 +12,8 @@
 #define PROFESSORS_FILE_PATH "src/core/database/file/professors/storage.txt"
 
 Professor createProfessor(const CreateProfessorData *data) {
+  srand(time(NULL));
+
   Professor professor;
 
    FILE *file = fopen(PROFESSORS_FILE_PATH, "a");

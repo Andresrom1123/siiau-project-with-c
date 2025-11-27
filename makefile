@@ -8,7 +8,9 @@ SRC = src/main.c \
 	src/core/manageProfessors/get/GetProfessors.c \
 	src/core/manageStudents/assignSubject/AssignSubject.c \
 	src/core/manageStudents/create/CreateStudent.c \
+	src/core/manageStudents/get/GetStudent.c \
 	src/core/manageStudents/get/GetStudents.c \
+	src/core/manageStudents/modify/ModifyStudent.c \
 	src/core/manageSubjects/create/CreateSubject.c \
 	src/core/manageStudents/manageStudents.c \
 	src/core/manageSubjects/manageSubjects.c \

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "../../../Subject.h"
 #include "../../../SubjectList.h"
@@ -11,6 +12,8 @@
 #define SUBJECTS_FILE_PATH "src/core/database/file/subjects/storage.txt"
 
 Subject createSubject(const CreateSubjectData *data) {
+  srand(time(NULL));
+
   Subject subject;
 
   FILE *file = fopen(SUBJECTS_FILE_PATH, "a");

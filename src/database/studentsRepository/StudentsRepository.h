@@ -3,13 +3,15 @@
 
 #include "../../core/Student.h"
 #include "./CreateStudentData.h"
+#include "./UpdateStudentData.h"
 #include "./StudentList.h"
 
 typedef struct {
   void (*assignSubject)(const int studentCode, const int subjectCode);
   Student (*create)(const CreateStudentData *data);
-  StudentList (*findAll)(const void *database);
-  Student* (*findByCode)(const int code, const void *database);
+  StudentList (*findAll)();
+  Student* (*findByCode)(const int code);
+  void (*updateByCode)(const int code, const UpdateStudentData *data);
 } StudentsRepository;
 
 #endif

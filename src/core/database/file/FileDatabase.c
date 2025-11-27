@@ -8,8 +8,8 @@ Database newFileDatabase() {
   Database database;
 
   database.professors = newFileProfessorsDatabase();
-  database.students = newFileStudentsDatabase();
   database.subjects = newFileSubjectsDatabase();
+  database.students = newFileStudentsDatabase(database);
 
   return database;
 }

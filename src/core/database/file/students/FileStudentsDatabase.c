@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "../../../Student.h"
 #include "../../../../lib/generateCode/generateCode.h"
@@ -8,6 +9,7 @@
 #include "../../../../database/studentsRepository/CreateStudentData.h"
 #include "../../../../database/studentsRepository/StudentsRepository.h"
 #include "../../../../database/studentsRepository/StudentList.h"
+#include "../../../../database/studentsRepository/UpdateStudentData.h"
 
 char *strtok_r(char *, const char *, char **);
 
@@ -15,7 +17,11 @@ char *strtok_r(char *, const char *, char **);
 #define MAX_STUDENTS 200
 #define STUDENTS_FILE_PATH "src/core/database/file/students/storage.txt"
 
+Database db;
+
 Student createStudent(const CreateStudentData *data) {
+  srand(time(NULL));
+
   Student student;
 
   FILE *file = fopen(STUDENTS_FILE_PATH, "a");
@@ -51,9 +57,7 @@ Student createStudent(const CreateStudentData *data) {
   }
 }
 
-StudentList findAllStudents(const void *database) {
-  Database *db = (Database*) database;
-
+StudentList findAllStudents() {
   StudentList list;
 
   list.items = NULL;
@@ -129,7 +133,7 @@ StudentList findAllStudents(const void *database) {
 
       int subjectCode = atoi(subjToken);
 
-      Subject *fullSubject = db->subjects.findByCode(subjectCode);
+      Subject *fullSubject = db.subjects.findByCode(subjectCode);
 
       if (fullSubject) {
         subjectList->items[subjectList->count++] = *fullSubject;
@@ -162,9 +166,7 @@ StudentList findAllStudents(const void *database) {
   return list;
 }
 
-Student* findByCodeStudent(const int code, const void *database) {
-  Database *db = (Database*) database;
-
+Student* findByCodeStudent(const int code) {
   FILE *file = fopen(STUDENTS_FILE_PATH, "r");
 
   if (!file) {
@@ -237,7 +239,7 @@ Student* findByCodeStudent(const int code, const void *database) {
 
       int subjectCode = atoi(subjToken);
 
-      Subject *fullSubject = db->subjects.findByCode(subjectCode);
+      Subject *fullSubject = db.subjects.findByCode(subjectCode);
 
       if (fullSubject) {
         subjectList->items[subjectList->count++] = *fullSubject;
@@ -332,14 +334,86 @@ void assignSubjectToStudent(const int studentCode, const int subjectCode) {
   fclose(file);
 }
 
+#define MAX_LINE 512
 
-StudentsRepository newFileStudentsDatabase() {
+void UpdateStudentByCode(const int code, const UpdateStudentData *data) {
+  FILE *file = fopen(STUDENTS_FILE_PATH, "r");
+
+  if (!file) {
+    printf("Error: students file not found.\n");
+
+    return;
+  }
+
+  char line[MAX_LINE];
+  char newContent[4096] = "";
+
+  while (fgets(line, sizeof(line), file)) {
+    char copy[MAX_LINE];
+
+    strcpy(copy, line);
+
+    copy[strcspn(copy, "\n")] = 0;
+
+    char *token = strtok(copy, ":");
+
+    if (!token) continue;
+
+    int studentCode = atoi(token);
+
+    if (studentCode == code) {
+      strtok(NULL, ":");
+      strtok(NULL, ":");
+      strtok(NULL, ":");
+      strtok(NULL, ":");
+
+      char *subjects = strtok(NULL, ":");
+
+      if (!subjects) subjects = "";
+
+      char buffer[MAX_LINE * 2];
+
+      snprintf(buffer, sizeof(buffer), "%d:%s:%s:%s:%s:%s\n",
+        studentCode,
+        data->name,
+        data->firstLastName,
+        data->secondLastName,
+        data->major,
+        subjects
+      );
+
+      strcat(newContent, buffer);
+    } else {
+      strcat(newContent, line);
+    }
+  }
+
+  fclose(file);
+
+  file = fopen(STUDENTS_FILE_PATH, "w");
+
+  if (!file) {
+    printf("Error opening file for writing.\n");
+
+    return;
+  }
+
+  fprintf(file, "%s", newContent);
+
+  fclose(file);
+}
+
+
+StudentsRepository newFileStudentsDatabase(Database database) {
+  db = database;
+
   StudentsRepository repo;
 
   repo.create = &createStudent;
   repo.findAll = &findAllStudents;
   repo.findByCode = &findByCodeStudent;
   repo.assignSubject = &assignSubjectToStudent;
+  repo.updateByCode = &UpdateStudentByCode;
 
   return repo;
 }
