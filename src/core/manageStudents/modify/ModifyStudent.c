@@ -39,7 +39,7 @@ void ModifyStudent(Database database) {
   data.major = student->major;
 
   switch (option) {
-    case 1: {
+    case 1:
       char name[50];
 
       printf("\nIngresa el nuevo nombre: ");
@@ -48,8 +48,7 @@ void ModifyStudent(Database database) {
       data.name = name;
 
       break;
-    }
-    case 2: {
+    case 2:
       char firstLastName[50];
 
       printf("\nIngresa el nuevo apellido paterno: ");
@@ -58,8 +57,7 @@ void ModifyStudent(Database database) {
       data.firstLastName = firstLastName;
 
       break;
-    }
-    case 3: {
+    case 3:
       char secondLastName[50];
 
       printf("\nIngresa el nuevo apellido materno: ");
@@ -68,8 +66,7 @@ void ModifyStudent(Database database) {
       data.secondLastName = secondLastName;
 
       break;
-    }
-    case 4: {
+    case 4:
       char major[50];
 
       printf("\nIngresa la nueva carrera de ingenieria: ");
@@ -82,7 +79,6 @@ void ModifyStudent(Database database) {
       data.major = majorFixed;
 
       break;
-    }
     case 5:
       return;
     default:

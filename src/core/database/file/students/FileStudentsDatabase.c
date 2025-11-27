@@ -403,6 +403,55 @@ void UpdateStudentByCode(const int code, const UpdateStudentData *data) {
   fclose(file);
 }
 
+void deleteStudentByCode(const int code) {
+  FILE *file = fopen(STUDENTS_FILE_PATH, "r");
+
+  if (!file) {
+    printf("Error: students file not found.\n");
+    return;
+  }
+
+  char line[MAX_LINE];
+  char newContent[4096] = "";
+
+  while (fgets(line, sizeof(line), file)) {
+    char copy[MAX_LINE];
+
+    strcpy(copy, line);
+
+    copy[strcspn(copy, "\n")] = 0;
+
+    char *token = strtok(copy, ":");
+
+    if (!token) {
+      strcat(newContent, line);
+
+      continue;
+    }
+
+    int studentCode = atoi(token);
+
+    if (studentCode == code) {
+      continue;
+    }
+
+    strcat(newContent, line);
+  }
+
+  fclose(file);
+
+  file = fopen(STUDENTS_FILE_PATH, "w");
+
+  if (!file) {
+    printf("Error opening file for writing.\n");
+
+    return;
+  }
+
+  fprintf(file, "%s", newContent);
+  fclose(file);
+}
+
 
 StudentsRepository newFileStudentsDatabase(Database database) {
   db = database;
@@ -410,6 +459,7 @@ StudentsRepository newFileStudentsDatabase(Database database) {
   StudentsRepository repo;
 
   repo.create = &createStudent;
+  repo.deleteByCode = &deleteStudentByCode;
   repo.findAll = &findAllStudents;
   repo.findByCode = &findByCodeStudent;
   repo.assignSubject = &assignSubjectToStudent;
