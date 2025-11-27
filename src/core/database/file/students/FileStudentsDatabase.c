@@ -166,7 +166,7 @@ StudentList findAllStudents() {
   return list;
 }
 
-Student* findByCodeStudent(const int code) {
+Student* findStudentByCode(const int code) {
   FILE *file = fopen(STUDENTS_FILE_PATH, "r");
 
   if (!file) {
@@ -461,7 +461,7 @@ StudentsRepository newFileStudentsDatabase(Database database) {
   repo.create = &createStudent;
   repo.deleteByCode = &deleteStudentByCode;
   repo.findAll = &findAllStudents;
-  repo.findByCode = &findByCodeStudent;
+  repo.findByCode = &findStudentByCode;
   repo.assignSubject = &assignSubjectToStudent;
   repo.updateByCode = &UpdateStudentByCode;
 
