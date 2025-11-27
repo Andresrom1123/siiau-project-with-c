@@ -9,6 +9,7 @@
 
 typedef struct {
   Professor (*create)(const CreateProfessorData *data);
+  void (*deleteByCode)(const int code);
   ProfessorList (*findAll)();
   Professor* (*findByCode)(const int code);
   void (*updateByCode)(const int code, const UpdateProfessorData *data);

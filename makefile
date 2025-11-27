@@ -5,6 +5,7 @@ SRC = src/main.c \
 	src/lib/generateCode/generateCode.c \
 	src/core/manageProfessors/manageProfessors.c \
 	src/core/manageProfessors/create/CreateProfessor.c \
+	src/core/manageProfessors/delete/DeleteProfessor.c \
 	src/core/manageProfessors/get/GetProfessors.c \
 	src/core/manageProfessors/get/GetProfessor.c \
 	src/core/manageProfessors/modify/ModifyProfessor.c \

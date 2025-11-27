@@ -2,12 +2,10 @@
 
 #include "../../database/Database.h"
 #include "./create/CreateProfessor.h"
+#include "./delete/DeleteProfessor.h"
 #include "./get/GetProfessors.h"
 #include "./get/GetProfessor.h"
 #include "./modify/ModifyProfessor.h"
-
-#include "./create/CreateProfessor.h"
-
 
 int manageProfessors(Database database) {
   int option;
@@ -41,7 +39,7 @@ int manageProfessors(Database database) {
 
       break;
     case 5:
-      printf("Eliminar un professor");
+      DeleteProfessor(database);
 
       break;
     case 6:
