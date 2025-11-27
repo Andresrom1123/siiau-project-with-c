@@ -1,2 +1,2 @@
 123:Leonardo:Lopez:Mariscal:Matematicas:
-1234:Andres:Romero:Vergara:Fisica:
+1234:Andres:Romero:Vergara:Programacion:

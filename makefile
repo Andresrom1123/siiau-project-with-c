@@ -16,6 +16,9 @@ SRC = src/main.c \
 	src/core/manageStudents/get/GetStudents.c \
 	src/core/manageStudents/modify/ModifyStudent.c \
 	src/core/manageSubjects/create/CreateSubject.c \
+	src/core/manageSubjects/get/GetSubjects.c \
+	src/core/manageSubjects/modify/ModifySubject.c \
+	src/core/manageSubjects/delete/DeleteSubject.c \
 	src/core/manageStudents/manageStudents.c \
 	src/core/manageSubjects/manageSubjects.c \
 	src/core/database/file/FileDatabase.c \

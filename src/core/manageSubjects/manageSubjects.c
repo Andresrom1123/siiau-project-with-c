@@ -3,6 +3,9 @@
 #include "../../database/Database.h"
 
 #include "./create/CreateSubject.h"
+#include "./delete/DeleteSubject.h"
+#include "./get/GetSubjects.h"
+#include "./modify/ModifySubject.h"
 
 int manageSubjects(Database database) {
   int option;
@@ -12,8 +15,7 @@ int manageSubjects(Database database) {
   printf("\n 2. Consultar la lista de materias");
   printf("\n 3. Modificar una materia");
   printf("\n 4. Eliminar una materia");
-  printf("\n 5. Regresar al menu principal");
-  printf("\n 6. Guardar y salir");
+  printf("\n 5. Guardar y salir");
   printf("\n Que opcion deseas elegir: ");
 
   scanf("%d", &option);
@@ -24,22 +26,18 @@ int manageSubjects(Database database) {
 
       break;
     case 2:
-      printf("\nConsultar la lista de materias");
+      GetSubjects(database);
 
       break;
     case 3:
-      printf("\nModificar una materia");
+      ModifySubject(database);
 
       break;
     case 4:
-      printf("\nEliminar una materia");
+      DeleteSubject(database);
 
       break;
     case 5:
-      printf("\nRegresar al menu principal");
-
-      break;
-    case 6:
       return 0;
 
       break;
