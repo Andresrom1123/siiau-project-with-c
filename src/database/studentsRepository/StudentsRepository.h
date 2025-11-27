@@ -9,6 +9,7 @@
 typedef struct {
   void (*assignSubject)(const int studentCode, const int subjectCode);
   Student (*create)(const CreateStudentData *data);
+  void (*deleteByCode)(const int code);
   StudentList (*findAll)();
   Student* (*findByCode)(const int code);
   void (*updateByCode)(const int code, const UpdateStudentData *data);

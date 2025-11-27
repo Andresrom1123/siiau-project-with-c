@@ -16,8 +16,7 @@ int manageProfessors(Database database) {
   printf("\n 3. Buscar un profesor");
   printf("\n 4. Modificar un profesor");
   printf("\n 5. Eliminar un profesor");
-  printf("\n 6. Regresar al menu principal");
-  printf("\n 7. Guardar y salir");
+  printf("\n 6. Guardar y salir");
   printf("\n Que opcion deseas elegir: ");
 
   scanf("%d", &option);
@@ -32,7 +31,7 @@ int manageProfessors(Database database) {
       
       break;
     case 3:
-      printf("Buscar un professor");
+      // GetProfessor(database);
 
       break;
     case 4:
@@ -44,10 +43,6 @@ int manageProfessors(Database database) {
 
       break;
     case 6:
-      printf("Regresar al menu principal");
-
-      break;
-    case 7:
       return 0;
 
       break;
