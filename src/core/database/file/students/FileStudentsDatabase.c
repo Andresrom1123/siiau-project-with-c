@@ -334,8 +334,6 @@ void assignSubjectToStudent(const int studentCode, const int subjectCode) {
   fclose(file);
 }
 
-#define MAX_LINE 512
-
 void UpdateStudentByCode(const int code, const UpdateStudentData *data) {
   FILE *file = fopen(STUDENTS_FILE_PATH, "r");
 

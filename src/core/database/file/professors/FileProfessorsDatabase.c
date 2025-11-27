@@ -48,6 +48,56 @@ Professor createProfessor(const CreateProfessorData *data) {
   return professor;
 }
 
+void deleteProfessorByCode(const int code) {
+  FILE *file = fopen(PROFESSORS_FILE_PATH, "r");
+
+  if (!file) {
+    printf("Error: professor file not found.\n");
+    return;
+  }
+
+  char line[MAX_LINE];
+  char newContent[4096] = "";
+
+  while (fgets(line, sizeof(line), file)) {
+    char copy[MAX_LINE];
+
+    strcpy(copy, line);
+
+    copy[strcspn(copy, "\n")] = 0;
+
+    char *token = strtok(copy, ":");
+
+    if (!token) {
+      strcat(newContent, line);
+
+      continue;
+    }
+
+    int professorCode = atoi(token);
+
+    if (professorCode == code) {
+      continue;
+    }
+
+    strcat(newContent, line);
+  }
+
+  fclose(file);
+
+  file = fopen(PROFESSORS_FILE_PATH, "w");
+
+  if (!file) {
+    printf("Error opening file for writing.\n");
+
+    return;
+  }
+
+  fprintf(file, "%s", newContent);
+  fclose(file);
+  
+}
+
 ProfessorList findAllProfessors() {
   ProfessorList list;
 
@@ -222,6 +272,7 @@ ProfessorsRepository newFileProfessorsDatabase() {
   ProfessorsRepository repo;
 
   repo.create = &createProfessor;
+  repo.deleteByCode = &deleteProfessorByCode;
   repo.findAll = &findAllProfessors;
   repo.findByCode = &findProfessorByCode;
   repo.updateByCode = &updateProfessorByCode;
