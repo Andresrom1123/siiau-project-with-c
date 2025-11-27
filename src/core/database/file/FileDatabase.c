@@ -2,12 +2,14 @@
 
 #include "./professors/FileProfessorsDatabase.h"
 #include "./students/FileStudentsDatabase.h"
+#include "./subjects/FileSubjectsDatabase.h"
 
 Database newFileDatabase() {
   Database database;
 
-  database.students = newFileStudentsDatabase();
   database.professors = newFileProfessorsDatabase();
+  database.students = newFileStudentsDatabase();
+  database.subjects = newFileSubjectsDatabase();
 
   return database;
 }

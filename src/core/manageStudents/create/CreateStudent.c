@@ -31,5 +31,5 @@ void CreateStudent(Database database) {
   
   database.students.create(&data);
 
-  printf("\nSe ha create el nuevo estudiante correctamente!");
+  printf("\nSe ha creado el nuevo estudiante correctamente!");
 }
